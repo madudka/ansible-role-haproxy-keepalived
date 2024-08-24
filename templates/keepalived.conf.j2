@@ -1,0 +1,20 @@
+vrrp_script chk_haproxy {
+    script 'killall -0 haproxy'
+    interval 2
+}
+
+vrrp_instance haproxy-vip {
+    interface {{ haproxy_network_interface }}
+    state {{ state }}
+    priority {{ priority }}
+
+    virtual_router_id 51
+
+    virtual_ipaddress {
+        {{ haproxy_virtual_ip }}/{{ haproxy_subnet_mask }}
+    }
+
+    track_script {
+        chk_haproxy
+    }
+}

@@ -1,0 +1,34 @@
+---
+- name: Install KeepAlived
+  ansible.builtin.package:
+    name: keepalived
+    state: present
+  changed_when: true
+  notify:
+    - Restart KeepAlived
+    - Restart HAProxy
+
+- name: Create KeepAlived config for master
+  vars:
+    state: MASTER
+    priority: 200
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: "{{ keepalived_conf_path }}"
+    owner: "{{ cfg_owner }}"
+    group: "{{ cfg_group }}"
+    mode: '0644'
+  when: inventory_hostname == loadbalancer_master
+
+- name: Create KeepAlived config for backup
+  vars:
+    state: BACKUP
+    priority: 100
+  ansible.builtin.template:
+    src: keepalived.conf.j2
+    dest: "{{ keepalived_conf_path }}"
+    owner: "{{ cfg_owner }}"
+    group: "{{ cfg_group }}"
+    mode: '0644'
+  when: inventory_hostname != loadbalancer_master
+  

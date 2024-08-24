@@ -1,0 +1,14 @@
+---
+#General
+cfg_owner: root
+cfg_group: root
+
+#HAproxy config
+haproxy_cfg_path: /etc/haproxy/haproxy.cfg
+haproxy_cfg_backup_path: /etc/haproxy/haproxy.cfg.backup
+haproxy_user: haproxy
+haproxy_group: haproxy
+balance_type: roundrobin
+
+#KeepAlived config
+keepalived_conf_path: /etc/keepalived/keepalived.conf

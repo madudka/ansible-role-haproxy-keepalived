@@ -1,0 +1,6 @@
+---
+- name: Import install HAproxy
+  import_tasks: haproxy.yml
+
+- name: Import install KeepAlived
+  import_tasks: keepalived.yml
