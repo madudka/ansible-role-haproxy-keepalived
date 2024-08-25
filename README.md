@@ -8,7 +8,7 @@ Tested on OS Debian GNU/Linux 12 (bookworm) with kernel Linux 6.1.0-23-amd64.
 Install
 -------
 ```
-ansible-galaxy install madudka.haproxy-keepalived
+ansible-galaxy install madudka.haproxy_keepalived
 ```
 
 Requirements
@@ -68,7 +68,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: all
       roles:
-         - { role: madudka.haproxy-keepalived }
+         - { role: madudka.haproxy_keepalived }
       become: true
 
 License
