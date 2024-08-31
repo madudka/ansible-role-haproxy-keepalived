@@ -1,6 +1,6 @@
 ---
 - name: Import install HAproxy
-  import_tasks: haproxy.yml
+  ansible.builtin.import_tasks: haproxy.yml
 
 - name: Import install KeepAlived
-  import_tasks: keepalived.yml
+  ansible.builtin.import_tasks: keepalived.yml
